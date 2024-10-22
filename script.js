@@ -29,7 +29,7 @@ document.getElementById('guestbook-form').addEventListener('submit', function(ev
         li.appendChild(starButton);
 
         // Eintrag zur Liste hinzufügen
-        document.getElementById('guestbook-entries').appendChild(li);
+        document.getElementById('guestbook-entries').appendChild(li); // Ensure this matches your HTML
 
         // Formular zurücksetzen
         document.getElementById('guestbook-form').reset();
