@@ -1,29 +1,23 @@
-document.getElementById('guestbook-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+.star-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: grey;
+    margin-left: 10px;
+}
 
-const name = document.getElementById('name').value;
-const message = document.getElementById('message').value;
- // Check ob Feld auch ausgefüllt ist
-    if (name && message) {
-// ein Listenelement erstellen
-        const li = document.createElement('li');
-        li.textContent = `${name} sagt: ${message}`;
-// Stern-Icon Hinzufügen 
-        const starButton = document.createElement('button');
-        starButton.innerHTML = '⭐';
-        starButton.classList.add('star-button');
- // Event-Listener hervorheben
-        starButton.addEventListener('click', function() {
-            if (li.classList.contains('starred')) {
-                li.classList.remove('starred');  // Stern entfernen
-            } else {
-                li.classList.add('starred');  // Stern hinzufügen
-            }
-        });
+.starred {
+    color: gold;
+}
 
-        li.appendChild(starButton);
-        document.getElementById('guestbook-entries').appendChild(li);
-
-        
-        document.getElementById('guestbook-form').reset();
-    }
+li {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
