@@ -1,23 +1,37 @@
-.star-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    color: grey;
-    margin-left: 10px;
-}
+document.getElementById('guestbook-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-.starred {
-    color: gold;
-}
+    // Name und Nachricht abrufen
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
 
-li {
-    background: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    // Überprüfen, ob die Felder ausgefüllt sind
+    if (name && message) {
+        // Neues Listenelement erstellen
+        const li = document.createElement('li');
+        li.textContent = `${name} sagt: ${message}`;
+
+        // Stern-Button erstellen
+        const starButton = document.createElement('button');
+        starButton.innerHTML = '⭐';
+        starButton.classList.add('star-button');
+
+        // Event-Listener für das Markieren/Hervorheben mit dem Stern
+        starButton.addEventListener('click', function() {
+            if (li.classList.contains('starred')) {
+                li.classList.remove('starred');  // Stern entfernen
+            } else {
+                li.classList.add('starred');  // Stern hinzufügen
+            }
+        });
+
+        // Stern-Button dem Listenelement hinzufügen
+        li.appendChild(starButton);
+
+        // Eintrag zur Liste hinzufügen
+        document.getElementById('guestbook-entries').appendChild(li);
+
+        // Formular zurücksetzen
+        document.getElementById('guestbook-form').reset();
+    }
+});
